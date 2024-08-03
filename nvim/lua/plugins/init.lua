@@ -1,11 +1,14 @@
 return {
     {"nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7"}, -- Useful lua functions used by lots of plugins
     {"windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347"},
-     -- Autopairs, integrates with both cmp and treesitter
-    {"numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67"},
-    {"JoosepAlviste/nvim-ts-context-commentstring", commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08"},
+     -- Autopairs, integrates with both cmp and reesitter
+  {"numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67"},
+  {"JoosepAlviste/nvim-ts-context-commentstring", commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08",
+      dependencies = {
+	"nvim-treesitter/nvim-treesitter"
+      }
+  },
     "kyazdani42/nvim-tree.lua",
-    "nvim-treesitter/nvim-treesitter",
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -31,9 +34,8 @@ return {
             )
         end
     },
-    "romgrk/barbar.nvim",
+    {"romgrk/barbar.nvim", commit = "53b5a2f34b68875898f0531032fbf090e3952ad7"},
     {"moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56"},
-    {"nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621"},
     {"akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda"},
     {"lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6"},
     {"lukas-reineke/indent-blankline.nvim", commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6"},
@@ -61,9 +63,6 @@ return {
     {"RRethy/vim-illuminate", commit = "d6ca7f77eeaf61b3e6ce9f0e5a978d606df44298"},
     -- Telescope
     {"nvim-telescope/telescope.nvim", tag = "0.1.4"},
-    -- Treesitter
-    {"nvim-treesitter/nvim-treesitter"},
-    -- Git
     --{"lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" },
     {
         "vhyrro/luarocks.nvim",
