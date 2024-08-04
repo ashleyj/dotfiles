@@ -64,14 +64,6 @@ return {
     -- Telescope
     {"nvim-telescope/telescope.nvim", tag = "0.1.4"},
     --{"lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" },
-    {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true,
-        opts = {
-            rocks = {"gitsigns", "luaformatter"}
-        }
-    },
     "mfussenegger/nvim-dap",
     "nvim-neotest/nvim-nio",
     {"rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}},
