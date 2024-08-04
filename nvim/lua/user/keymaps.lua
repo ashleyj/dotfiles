@@ -91,9 +91,14 @@ vim.api.nvim_set_keymap("i", "<C-p>", 'copilot#Accept("<CR>")', { silent = true,
 -- Override buffer delete --
 
 keymap('n', 'bd', "<Cmd>BufferClose<CR>", opts)
-keymap('n', '<leader>r', vim.lsp.buf.references, opts)
 -- LSP --
-
+keymap('n', '<leader>r', vim.lsp.buf.references, opts)
+keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap('n', '<leader>r', vim.lsp.buf.references, opts)
 
  -- DAP--
@@ -104,7 +109,6 @@ keymap("n", "<leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>",opts)
 keymap("n", "<leader>ds", "<Cmd>lua require'dap'.step_over()<CR>",opts)
 keymap("n", "<leader>di", "<Cmd>lua require'dap'.step_into()<CR>",opts)
 keymap("n", "<leader>do", "<Cmd>lua require'dap'.step_out()<CR>",opts)
-
 
 -- VimSpector --
 --nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
