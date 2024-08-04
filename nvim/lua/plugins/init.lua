@@ -46,7 +46,7 @@ return {
     {"folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764"},
     {"lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83"},
     -- Cmp
-    {"hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc"}, -- The completion plugin
+    {"hrsh7th/nvim-cmp"}, -- The completion plugin
     {"hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa"}, -- buffer completions
     {"hrsh7th/cmp-path", commit = "447c87cdd6e6d6a1d2488b1d43108bfa217f56e1"}, -- path completions
     {"saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36"}, -- snippet completions
