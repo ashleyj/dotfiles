@@ -2,13 +2,15 @@ local servers = {
 	--"lua_ls",
 	-- "cssls",
 	"html",
+        "tsserver",
 	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
-  "omnisharp",
-  "intelephense",
-  "angularls",
+  	"omnisharp",
+  	"intelephense",
+  	"angularls",
+	"dartls"
 }
 
 local settings = {
