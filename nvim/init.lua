@@ -19,7 +19,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require('lazy').setup('plugins')
---require "user.options"
+require "user.options"
 require "user.keymaps"
 require "user.colorscheme"
 require "user.cmp"
