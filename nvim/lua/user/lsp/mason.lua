@@ -2,14 +2,14 @@ local servers = {
 	--"lua_ls",
 	-- "cssls",
 	"html",
-        "ts_ls",
+	"ts_ls",
 	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
-  	"omnisharp",
-  	"intelephense",
-  	"angularls",
+	"omnisharp",
+	"intelephense",
+	"angularls",
 	"dartls"
 }
 
@@ -41,7 +41,7 @@ local opts = {}
 
 for _, server in pairs(servers) do
 	opts = {
-		on_attach = require("user.lsp.handlers")._attach,
+		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
