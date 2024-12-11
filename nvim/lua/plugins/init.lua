@@ -102,7 +102,6 @@ return {
     "puremourning/vimspector",
     "ray-x/lsp_signature.nvim",
     "dgagn/diagflow.nvim",
-    "nvim-lua/completion-nvim",
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-ui",
     "mhartington/formatter.nvim",
