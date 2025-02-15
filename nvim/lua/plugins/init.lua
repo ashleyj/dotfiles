@@ -42,9 +42,6 @@ return {
     {"goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31"},
     "folke/which-key.nvim",
     "nvim-tree/nvim-web-devicons",
-    -- Colorschemes
-    {"folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764"},
-    {"lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83"},
     -- Cmp
     {"hrsh7th/nvim-cmp"}, -- The completion plugin
     {"hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa"}, -- buffer completions
