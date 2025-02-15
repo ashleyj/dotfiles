@@ -37,8 +37,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<C-n>", ":BufferNext<CR>", opts)
-keymap("n", "<C-l>", ":BufferPrevious<CR>", opts)
+keymap("n", "<C-n>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<C-l>", ":BufferLineCyclePrev<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
