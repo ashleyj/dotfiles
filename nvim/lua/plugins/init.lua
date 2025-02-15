@@ -34,7 +34,6 @@ return {
             )
         end
     },
-    {"romgrk/barbar.nvim", commit = "53b5a2f34b68875898f0531032fbf090e3952ad7"},
     {"moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56"},
     {"akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda"},
     {"lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6"},
