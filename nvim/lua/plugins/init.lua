@@ -97,7 +97,6 @@ return {
         build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
     },
     "nvim-lua/plenary.nvim",
-    {"ThePrimeagen/harpoon", branch = "harpoon2", dependencies = {"nvim-lua/plenary.nvim"}},
     "OmniSharp/omnisharp-vim",
     "puremourning/vimspector",
     "ray-x/lsp_signature.nvim",

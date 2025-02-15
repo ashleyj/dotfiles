@@ -122,19 +122,6 @@ keymap("n", "<leader>do", "<Cmd>lua require'dap'.step_out()<CR>",opts)
 --nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
 
 
--- Harpoon --
---vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
---vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
---vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
---vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
---vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
---vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
-
--- Toggle previous & next buffers stored within Harpoon list
---vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
---vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
