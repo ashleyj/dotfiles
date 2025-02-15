@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -32,7 +31,6 @@ require "user.toggleterm"
 require "user.project"
 require "user.impatient"
 require "user.alpha"
-require "user.whichkey"
 require "user.autocommands"
 require "user.dap"
 require "user.lsp.angular"

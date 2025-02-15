@@ -40,7 +40,6 @@ return {
     {"lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6"},
     {"lukas-reineke/indent-blankline.nvim", commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6"},
     {"goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31"},
-    "folke/which-key.nvim",
     "nvim-tree/nvim-web-devicons",
     -- Cmp
     {"hrsh7th/nvim-cmp"}, -- The completion plugin
@@ -71,7 +70,6 @@ return {
         build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
     },
     "stevearc/conform.nvim",
-    "stevearc/dressing.nvim",
     {"Pocco81/auto-save.nvim", config = function()
             require("auto-save").setup {}
         end},
