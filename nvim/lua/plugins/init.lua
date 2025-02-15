@@ -100,7 +100,6 @@ return {
     "OmniSharp/omnisharp-vim",
     "puremourning/vimspector",
     "ray-x/lsp_signature.nvim",
-    "dgagn/diagflow.nvim",
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-ui",
     "mhartington/formatter.nvim",
