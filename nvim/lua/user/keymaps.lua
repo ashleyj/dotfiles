@@ -28,7 +28,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>f", "<Cmd>Telescope git_files<CR>", term_opts)
 
-keymap("n", "<C-w>f", "<Cmd>Neotree<CR>", opts)
+keymap("n", "<C-w>f", "<Cmd>Neotree toggle<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
