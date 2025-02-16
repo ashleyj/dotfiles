@@ -75,6 +75,8 @@ end
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
   client.server_capabilities.documentHighlightProvider = false
+	local keymap = vim.api.nvim_buf_set_keymap
+	local opts = { noremap = true, silent = true }
 	if client.name == "omnisharp" then
         keymap(bufnr, "n", "gd", "<cmd>lua require('omnisharp_extended').lsp_definition<cr>", opts)
         keymap(bufnr, "n", "gr", "<cmd>lua require('omnisharp_extended').lsp_references<cr>", opts)
