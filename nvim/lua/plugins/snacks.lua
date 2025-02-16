@@ -1,6 +1,6 @@
 return {
   "folke/snacks.nvim",
-  dependencies = "folk/which-key.nvim",
+  dependencies = "folke/which-key.nvim",
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
