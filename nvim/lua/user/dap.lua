@@ -9,8 +9,11 @@ dap.adapters.coreclr = {
 }
 
 dap.adapters.chrome = {
-  type = 'executable'
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv("HOME") .. "/src/vscode-chrome-debug/out/src/chromeDebug.js"}
 }
+
 
 require("dap-vscode-js").setup({
    adapters = { 'pwa-node', 'pwa-chrome', 'node-terminal', 'pwa-extensionHost'}, -- which adapters to register in nvim-dap
