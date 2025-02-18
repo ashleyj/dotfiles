@@ -105,6 +105,9 @@ keymap("n", "<leader>ds", "<Cmd>lua require'dap'.step_over()<CR>",opts)
 keymap("n", "<leader>di", "<Cmd>lua require'dap'.step_into()<CR>",opts)
 keymap("n", "<leader>do", "<Cmd>lua require'dap'.step_out()<CR>",opts)
 
+-- Ranfix fixes and opinionated behaviour --
+keymap('n', '<ESC>', ':noh<CR><ESC>', no_remap)
+
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
