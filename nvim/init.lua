@@ -33,3 +33,9 @@ require "user.alpha"
 require "user.autocommands"
 require "user.dap"
 require "user.lsp.angular"
+
+-- Disable highlighting
+vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "NONE", fg = "NONE", underline = false })
+vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "NONE", fg = "NONE", underline = false })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "NONE", fg = "NONE", underline = false })
+vim.api.nvim_set_hl(0, "SnippetTabstop", { bg = "NONE", fg = "NONE", bold = false })
