@@ -9,7 +9,8 @@ local servers = {
 	"yamlls",
 	"omnisharp",
 	"intelephense",
-	"angularls"
+	"angularls",
+	"terraformls"
 }
 
 local settings = {
