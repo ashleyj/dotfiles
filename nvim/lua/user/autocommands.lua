@@ -5,8 +5,6 @@ vim.cmd [[
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
-    autocmd InsertEnter * highlight CursorLine guibg=#3e4452 guifg=fg
-    autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
   augroup end
 
   augroup _git

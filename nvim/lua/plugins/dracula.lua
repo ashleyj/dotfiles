@@ -27,6 +27,7 @@ return {
         Identifier = {},
         Type = { fg = '#ff79c6' },
         TypeDef = {},
+        CursorLine = { bg = '#000000' },
       }
     }
   end
