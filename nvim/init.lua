@@ -5,7 +5,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -39,3 +39,11 @@ vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "NONE", fg = "NONE", underline
 vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "NONE", fg = "NONE", underline = false })
 vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "NONE", fg = "NONE", underline = false })
 vim.api.nvim_set_hl(0, "SnippetTabstop", { bg = "NONE", fg = "NONE", bold = false })
+
+vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "Normal" })
+vim.api.nvim_set_hl(0, "@type", { link = "Normal" })
+vim.api.nvim_set_hl(0, "@type.builtin", { link = "Normal" })
+vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "Normal" })       -- Tree-sitter brackets
+vim.api.nvim_set_hl(0, "@lsp.type.bracket", { link = "Normal" })          -- LSP-based brackets
+vim.api.nvim_set_hl(0, "@punctuation.special", { link = "Normal" })       -- Template literal `${}` brackets
+vim.api.nvim_set_hl(0, "@punctuation.delimiter", { link = "Normal" })     -- Other punctuation like `,` or `;`

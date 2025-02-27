@@ -20,7 +20,7 @@ return {
       padding_top = 0,
       padding_right = 0,
       text_align = 'right',                                    -- 'left', 'right'
-      placement = 'top',                                       -- 'top', 'inline'
+      placement = 'inline',                                       -- 'top', 'inline'
       inline_padding_left = 0,                                 -- the padding left when the placement is inline
       update_event = { 'DiagnosticChanged', 'BufReadPost' },   -- the event that updates the diagnostics cache
       toggle_event = { 'InsertEnter' },                        -- if InsertEnter, can toggle the diagnostics on inserts
@@ -34,7 +34,7 @@ return {
         horizontal = "─",
         vertical = "│"
       },
-      show_borders = true,
+      show_borders = false,
     }
   end
 }

@@ -75,6 +75,8 @@ end
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
   client.server_capabilities.documentHighlightProvider = false
+  client.server_capabilities.semanticTokensProvider = nil
+
 
 	local keymap = vim.api.nvim_buf_set_keymap
 	local opts = { noremap = true, silent = true }
