@@ -28,6 +28,7 @@ return {
         Type = { fg = '#ff79c6' },
         TypeDef = {},
         CursorLine = { bg = '#000000' },
+        TabLineSel = { bg = '#69FF94' },
       }
     }
   end

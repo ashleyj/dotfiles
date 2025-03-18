@@ -12,7 +12,7 @@ return {
         -- NOTE: this plugin is designed with this icon in mind,
         -- and so changing this is NOT recommended, this is intended
         -- as an escape hatch for people who cannot bear it for whatever reason
-        indicator = { style = "icon", icon = "▎" },
+        indicator = { style = "underline"},
         buffer_close_icon = '',
         modified_icon = "●",
         close_icon = "",
@@ -28,6 +28,7 @@ return {
         --     return vim.fn.fnamemodify(buf.name, ':t:r')
         --   end
         -- end,
+        themable = false,
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         tab_size = 25,
@@ -79,8 +80,8 @@ return {
         },
 
         buffer_selected = {
-          fg = { attribute = 'fg', highlight = '#ff0000' },
-          bg = { attribute = 'bg', highlight = '#0000ff' },
+          fg = { attribute = 'fg', highlight = 'TabLine' },
+          bg = { attribute = 'bg', highlight = 'TabLine' },
           gui = 'none'
         },
         buffer_visible = {
@@ -102,7 +103,7 @@ return {
         --   },
 
         tab_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
+          fg = { attribute = "fg", highlight = "#69FF94" },
           bg = { attribute = "bg", highlight = "Normal" },
         },
         tab = {
@@ -157,8 +158,8 @@ return {
            bg = {attribute='bg',highlight='TabLine'}
            },
         indicator_selected = {
-          fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-          bg = { attribute = "bg", highlight = "Normal" },
+          fg = { attribute = "fg", highlight = "#69FF94" },
+          bg = { attribute = "bg", highlight = "#69FF94" },
         },
       },
     }
