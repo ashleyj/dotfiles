@@ -5,8 +5,6 @@ end
 
 require "user.lsp.mason"
 require("user.lsp.handlers").setup()
-require "user.lsp.null-ls"
-
 local on_attach = function(client, bufnr)
     if client.server_capabilities then
         client.server_capabilities.documentHighlightProvider = false

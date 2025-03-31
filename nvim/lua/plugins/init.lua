@@ -29,7 +29,6 @@ return {
   "neovim/nvim-lspconfig",                                                                    -- enable LSP
   "williamboman/mason.nvim",                                                                  -- simple to use language server installer
   "williamboman/mason-lspconfig.nvim",
-  { "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }, -- for formatters and linters
   -- Telescope
   { "nvim-telescope/telescope.nvim",   tag = "0.1.4" },
   --{"lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" },
