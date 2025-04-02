@@ -29,6 +29,8 @@ return {
         TypeDef = {},
         CursorLine = { bg = '#000000' },
         TabLineSel = { bg = '#69FF94' },
+        Pmenu = { bg = '#000000', fg = '#808080'  },
+        PmenuSel = { bg = '#000000', fg = '#808080'},
       }
     }
   end
