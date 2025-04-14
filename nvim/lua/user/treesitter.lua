@@ -15,10 +15,5 @@ local configs = require "nvim-treesitter.configs"
       enable = true,
     },
     indent = { enable = true, disable = { "python", "css" } },
-
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
   }
 

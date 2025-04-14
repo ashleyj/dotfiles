@@ -14,8 +14,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+--vim.g.mapleader = ' '
+--vim.g.maplocalleader = ' '
 
 require('lazy').setup('plugins')
 require "user.options"
@@ -39,7 +39,7 @@ vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "NONE", fg = "NONE", underline
 vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "NONE", fg = "NONE", underline = false })
 vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "NONE", fg = "NONE", underline = false })
 vim.api.nvim_set_hl(0, "SnippetTabstop", { bg = "NONE", fg = "NONE", bold = false })
-
+--
 vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "Normal" })
 vim.api.nvim_set_hl(0, "@type", { link = "Normal" })
 vim.api.nvim_set_hl(0, "@type.builtin", { link = "Normal" })

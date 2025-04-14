@@ -103,7 +103,7 @@ return {
         --   },
 
         tab_selected = {
-          fg = { attribute = "fg", highlight = "#69FF94" },
+          fg = "#69FF94" ,
           bg = { attribute = "bg", highlight = "Normal" },
         },
         tab = {
@@ -158,8 +158,8 @@ return {
            bg = {attribute='bg',highlight='TabLine'}
            },
         indicator_selected = {
-          fg = { attribute = "fg", highlight = "#69FF94" },
-          bg = { attribute = "bg", highlight = "#69FF94" },
+          fg =  "#69FF94" ,
+          bg = "#69FF94" ,
         },
       },
     }
