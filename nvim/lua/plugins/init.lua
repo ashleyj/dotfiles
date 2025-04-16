@@ -31,11 +31,8 @@ return {
   -- Telescope
   { "nvim-telescope/telescope.nvim",   tag = "0.1.4" },
   --{"lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" },
-  "mfussenegger/nvim-dap",
   "nvim-neotest/nvim-nio",
-  { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
   { "folke/neodev.nvim",         opts = {} },
-  { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
   {
     "microsoft/vscode-js-debug",
     opt = true,
@@ -49,8 +46,6 @@ return {
     end
   },
   "mbbill/undotree",
-  "theHamsta/nvim-dap-virtual-text",
-  { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
   {
     "rmagatti/auto-session",
     config = function()
