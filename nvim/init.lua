@@ -30,7 +30,7 @@ require "user.toggleterm"
 require "user.project"
 require "user.impatient"
 require "user.alpha"
-require "user.autocommands
+require "user.autocommands"
 --require "user.dap"
 require "user.lsp.angular"
 
