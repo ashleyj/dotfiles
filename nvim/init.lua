@@ -30,9 +30,11 @@ require "user.toggleterm"
 require "user.project"
 require "user.impatient"
 require "user.alpha"
-require "user.autocommands"
+require "user.autocommands
 --require "user.dap"
 require "user.lsp.angular"
+
+
 
 -- Disable highlighting
 vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "NONE", fg = "NONE", underline = false })
@@ -43,7 +45,12 @@ vim.api.nvim_set_hl(0, "SnippetTabstop", { bg = "NONE", fg = "NONE", bold = fals
 vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "Normal" })
 vim.api.nvim_set_hl(0, "@type", { link = "Normal" })
 vim.api.nvim_set_hl(0, "@type.builtin", { link = "Normal" })
-vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "Normal" })       -- Tree-sitter brackets
-vim.api.nvim_set_hl(0, "@lsp.type.bracket", { link = "Normal" })          -- LSP-based brackets
-vim.api.nvim_set_hl(0, "@punctuation.special", { link = "Normal" })       -- Template literal `${}` brackets
-vim.api.nvim_set_hl(0, "@punctuation.delimiter", { link = "Normal" })     -- Other punctuation like `,` or `;`
+vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "Normal" })   -- Tree-sitter brackets
+vim.api.nvim_set_hl(0, "@lsp.type.bracket", { link = "Normal" })      -- LSP-based brackets
+vim.api.nvim_set_hl(0, "@punctuation.special", { link = "Normal" })   -- Template literal `${}` brackets
+vim.api.nvim_set_hl(0, "@punctuation.delimiter", { link = "Normal" }) -- Other punctuation like `,` or `;`
+
+
+
+-- something is wrong here, need to figure out what's resetting this value
+vim.cmd('autocmd TextYankPost * silent!lua vim.highlight.on_yank({higroup = "Visual", timeout = 200})')
