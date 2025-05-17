@@ -4,13 +4,31 @@ return {
   desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
 
   dependencies = {
+    "nvim-neotest/nvim-nio",
     "rcarriga/nvim-dap-ui",
-    -- virtual text for the debugger
     {
       "theHamsta/nvim-dap-virtual-text",
+      -- stylua: ignore
+      keys = {
+        { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+        { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
+      },
       opts = {},
+      config = function(_, opts)
+        local dap = require("dap")
+        local dapui = require("dapui")
+        dapui.setup(opts)
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+          dapui.open({})
+        end
+        dap.listeners.before.event_terminated["dapui_config"] = function()
+          dapui.close({})
+        end
+        dap.listeners.before.event_exited["dapui_config"] = function()
+          dapui.close({})
+        end
+      end,
     },
-    -- mason-nvim-dap for installing adapters
     {
       "jay-babu/mason-nvim-dap.nvim",
       dependencies = "williamboman/mason.nvim",
@@ -50,13 +68,13 @@ return {
   config = function()
     local dap = require('dap')
     --require("dap-vscode-js").setup({
-      --adapters = { 'pwa-node', 'pwa-chrome', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
-      --debugger_path = os.getenv("HOME") .. "/src/vscode-js-debug",                   -- path to the vscode-js-debug extension
+    --adapters = { 'pwa-node', 'pwa-chrome', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+    --debugger_path = os.getenv("HOME") .. "/src/vscode-js-debug",                   -- path to the vscode-js-debug extension
     --})
 
     --for _, language in ipairs({ "typescript", "javascript" }) do
-      --require("dap").configurations[language] = {
-      --}
+    --require("dap").configurations[language] = {
+    --}
     --end
 
     dap.adapters["pwa-chrome"] = {
@@ -93,5 +111,5 @@ return {
     vscode.json_decode = function(str)
       return vim.json.decode(json.json_strip_comments(str))
     end
-  end,
+  end
 }
