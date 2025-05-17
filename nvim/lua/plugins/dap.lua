@@ -83,7 +83,7 @@ return {
       port = "${port}",
       executable = {
         command = "node",
-        args = { os.getenv('HOME') .. "/src/vscode-js-debug/out/src/vsDebugServer.js", "${port}" },
+        args = { os.getenv('HOME') .. "/src/vscode-chrome-debug/out/src/chromeDebug.js", "--server=${port}" },
       }
     }
 
@@ -92,8 +92,8 @@ return {
       type = 'executable',
       command = 'node',
       args = {
-        --{ os.getenv("HOME") .. "/src/vscode-chrome-debug/out/src/chromeDebug.js" }
-        { os.getenv("HOME") .. "/src/vscode-js-debug/out/src/vsDebugServer.js" }
+        { os.getenv("HOME") .. "/src/vscode-chrome-debug/out/src/chromeDebug.js" }
+        --{ os.getenv("HOME") .. "/src/vscode-js-debug/out/src/vsDebugServer.js" }
       },
     }
 
