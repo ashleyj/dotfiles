@@ -19,3 +19,5 @@ vim.g.mapleader = ' '
 
 require('lazy').setup('plugins')
 require "config.options"
+require "config.keymaps"
+require "config.autocommand"
