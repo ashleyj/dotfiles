@@ -4,7 +4,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "ray-x/lsp_signature.nvim",
-    "Issafalcon/lsp-overloads.nvim"
+    "Issafalcon/lsp-overloads.nvim",
   },
 
   config = function()
@@ -70,8 +70,6 @@ return {
     -- re-usable on_attach function
 
     local function on_attach(client, bufnr)
-
-
       -- setup keymaps
       local opts = { noremap = true, silent = true }
       local keymap = vim.api.nvim_buf_set_keymap
@@ -99,6 +97,10 @@ return {
 
       client.server_capabilities.documentHighlightProvider = false
       client.server_capabilities.semanticTokensProvider = nil
+
+
+
+      client.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       if client.server_capabilities.signatureHelpProvider then
         require('lsp-overloads').setup(client, {
@@ -162,12 +164,16 @@ return {
     end
 
     local opts = {}
+    local cmp = require("cmp_nvim_lsp")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities = cmp.default_capabilities(capabilities)
 
     -- Setup all the LSP servers
     for _, server in pairs(servers) do
       opts = {
         on_attach = on_attach,
-        --capabilities = require("user.lsp.handlers").capabilities,
+        capabilities = capabilities
       }
 
       server = vim.split(server, "@")[1]
@@ -183,7 +189,6 @@ return {
 
       lspconfig[server].setup(opts)
     end
-
     cfg = {
       debug = false,                                              -- set to true to enable debug logging
       log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
