@@ -91,11 +91,18 @@ return {
     dap.adapters.chrome = {
       type = 'executable',
       command = 'node',
-      args = {
-        --{ os.getenv("HOME") .. "/src/vscode-chrome-debug/out/src/chromeDebug.js" }
-        { os.getenv("HOME") .. "/src/vscode-js-debug/out/src/vsDebugServer.js" }
-      },
+      args = { os.getenv("HOME") .. "/src/vscode-chrome-debug/out/src/chromeDebug.js" }
+        --{ os.getenv("HOME") .. "/src/vscode-js-debug/out/src/vsDebugServer.js" }
     }
+
+
+    dap.adapters.nativescript = {
+      name = "Attach to NativeScript CDP",
+      type = "executable",
+      command = "node",
+      args = { os.getenv("HOME") .. "/src/nativescript-vscode-extension/out/debug-adapter/nativeScriptDebug.js" },
+    }
+
 
     dap.adapters.coreclr = {
       type = 'executable',

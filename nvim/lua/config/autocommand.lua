@@ -4,7 +4,6 @@ vim.cmd [[
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
     autocmd FileType quickfix nnoremap <silent> <buffer> q :lclose<CR>
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end
@@ -32,3 +31,9 @@ vim.cmd [[
   augroup end
 ]]
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({ bg = 'yellow', style = 'bold', timeout = 150 })
+  end,
+})
