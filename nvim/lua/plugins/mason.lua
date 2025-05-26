@@ -76,7 +76,7 @@ return {
       keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
       keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-      keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+      keymap(bufnr, "n", "<leader>r", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
       keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
       keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
       keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
@@ -96,7 +96,7 @@ return {
       end
 
       client.server_capabilities.documentHighlightProvider = false
-      client.server_capabilities.semanticTokensProvider = nil
+      --client.server_capabilities.semanticTokensProvider = nil
 
 
 
