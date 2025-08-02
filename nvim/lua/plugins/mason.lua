@@ -20,14 +20,15 @@ return {
       "omnisharp",
       "intelephense",
       "angularls",
-      "terraformls"
+      "terraformls",
+      "pylsp"
     }
 
 
     vim.diagnostic.config({
       virtual_text = true,
       underline = {
-        severity = { min = vim.diagnostic.severity.WARN },
+        -- severity = { in = vim.diagnostic.severity.WARN },
       },
       signs = {
         text = {
