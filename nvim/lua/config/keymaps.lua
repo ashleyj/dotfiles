@@ -17,7 +17,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>f", "<Cmd>Telescope git_files<CR>", term_opts)
 
-keymap("n", "<C-w>f", "<Cmd>Neotree toggle<CR>", opts)
+keymap("n", "<C-w>f", "<Cmd>Neotree toggle position=left<CR>", opts)
+keymap("n", "<C-w>L", "<Cmd>Neotree position=float<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -37,6 +38,9 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "p", '"_dP', opts)
+
+
+keymap("v", "<leader>y", '"+y', opts)
 
 -- Visual Block --
 -- Move text up and down

@@ -3,7 +3,7 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "ray-x/lsp_signature.nvim",
+    "ashleyj/lsp_signature.nvim",
     "Issafalcon/lsp-overloads.nvim",
   },
 
