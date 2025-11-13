@@ -158,12 +158,6 @@ return {
 
     require("mason").setup(settings)
 
-    local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-    if not lspconfig_status_ok then
-      print "LSP not loaded"
-      return
-    end
-
     local opts = {}
     local cmp = require("cmp_nvim_lsp")
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -188,7 +182,10 @@ return {
         opts = vim.tbl_deep_extend("force", conf_opts, opts)
       end
 
-      lspconfig[server].setup(opts)
+      vim.lsp.config(server, opts)
+      vim.lsp.enable(server)
+
+
     end
     cfg = {
       debug = false,                                              -- set to true to enable debug logging

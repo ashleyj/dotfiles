@@ -16,7 +16,7 @@ return {
     indent = { enabled = true },
     input = { enabled = true },
     notifier = {
-      enabled = true,
+      enabled = false,
       timeout = 3000,
     },
     picker = { enabled = true },
@@ -60,6 +60,10 @@ return {
     { "<leader>sB",      function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
     { "<leader>sg",      function() Snacks.picker.grep() end,                                    desc = "Grep" },
     { "<leader>sw",      function() Snacks.picker.grep_word() end,                               desc = "Visual selection or word",      mode = { "n", "x" } },
+    -- Tabs
+    { "<leader>tn",      function() vim.api.nvim_command('tabNext') end,                         desc = "Tab - Next",      mode = { "n", "x" } },
+    { "<leader>tt",      function() vim.api.nvim_command('TermNew direction=horizontal') end,    desc = "Terminal Tab",      mode = { "n", "x" } },
+
 
     -- search
     { '<leader>s"',      function() Snacks.picker.registers() end,                               desc = "Registers" },
