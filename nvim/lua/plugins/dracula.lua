@@ -3,6 +3,16 @@ return {
   config = function()
     configs = require('dracula')
     configs.setup {
+      transparent_bg = true,
+      colors = {
+        red = "#e88388",
+        orange = "#f0b088",
+        yellow = "#f0dc8e",
+        green = "#8bc88b",
+        purple = "#c895d6",
+        cyan = "#8be9fd",
+        pink = "#ea9dc6",
+      },
       overrides = {
         ['@lsp.type.class'] = { },
         ['@lsp.type.enum'] = { },
