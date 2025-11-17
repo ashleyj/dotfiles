@@ -96,6 +96,7 @@ return {
         keymap(bufnr, "n", '<leader>D', "<cmd>lua require('omnisharp_extended').lsp_type_definition()<cr>", opts)
       end
 
+
       client.server_capabilities.documentHighlightProvider = false
       --client.server_capabilities.semanticTokensProvider = nil
 
@@ -182,20 +183,34 @@ return {
         opts = vim.tbl_deep_extend("force", conf_opts, opts)
       end
 
+      if server == "angularls" then
+        local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+
+        opts.cmd = {
+          "node",
+          mason_packages .. "/angular-language-server/node_modules/@angular/language-server/index.js",
+          "--stdio",
+          "--tsProbeLocations", "/opt/homebrew/lib/node_modules",
+          "--ngProbeLocations", mason_packages .. "/angular-language-server/node_modules",
+        }
+
+        opts.cmd_env = {
+          NODE_PATH = "/opt/homebrew/lib/node_modules"
+        }
+      end
+
       vim.lsp.config(server, opts)
       vim.lsp.enable(server)
-
-
     end
     cfg = {
-      debug = false,                                              -- set to true to enable debug logging
+      debug = false, -- set to true to enable debug logging
       --log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
       -- default is  ~/.cache/nvim/lsp_signature.log
-      verbose = false,                                            -- show debug line number
+      verbose = false, -- show debug line number
 
-      bind = true,                                                -- This is mandatory, otherwise border config won't get registered.
+      bind = true,     -- This is mandatory, otherwise border config won't get registered.
       -- If you want to hook lspsaga or other signature handler, pls set to false
-      doc_lines = 10,                                             -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+      doc_lines = 10,  -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
       -- set to 0 if you DO NOT want any API comments be shown
       -- This setting only take effect in insert mode, it does not affect signature help in normal
       -- mode, 10 by default
@@ -246,7 +261,7 @@ return {
       -- may not popup when typing depends on floating_window setting
 
       select_signature_key = '<C-n>', -- cycle to next signature, e.g. '<M-n>' function overloading
-      move_cursor_key = nil,      -- imap, use nvim_set_current_win to move cursor between current win and floating
+      move_cursor_key = nil,          -- imap, use nvim_set_current_win to move cursor between current win and floating
     }
 
     -- recommended:
