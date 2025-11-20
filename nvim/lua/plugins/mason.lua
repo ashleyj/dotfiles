@@ -5,6 +5,7 @@ return {
     "neovim/nvim-lspconfig",
     "ashleyj/lsp_signature.nvim",
     "Issafalcon/lsp-overloads.nvim",
+    "Hoffs/omnisharp-extended-lsp.nvim"
   },
 
   config = function()
@@ -25,6 +26,16 @@ return {
     }
 
 
+    -- Suppress lspconfig warnings
+    local notify = vim.notify
+    vim.notify = function(msg, ...)
+      if type(msg) == "string" and msg:match("lspconfig") then
+        return
+      end
+      notify(msg, ...)
+    end
+
+
     vim.diagnostic.config({
       virtual_text = true,
       underline = {
@@ -40,24 +51,6 @@ return {
       },
     })
 
-
-    local config = {
-      virtual_text = false, -- disable virtual text
-      signs = {
-        active = signs,     -- show signs
-      },
-      update_in_insert = true,
-      underline = true,
-      severity_sort = true,
-      float = {
-        focusable = true,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-      },
-    }
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = "rounded",
@@ -165,7 +158,6 @@ return {
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities = cmp.default_capabilities(capabilities)
 
-    -- Setup all the LSP servers
     for _, server in pairs(servers) do
       opts = {
         on_attach = on_attach,
@@ -176,6 +168,18 @@ return {
 
       if server == "omnisharp" then
         opts.cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/OmniSharp" }
+
+
+        -- Hack around omnisharp not respecting the lspconfig setup
+        opts.handlers = {
+          ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+          ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+          ["textDocument/references"] = require('omnisharp_extended').references_handler,
+          ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+        }
+
+        require 'lspconfig'.omnisharp.setup(opts)
+        goto continue
       end
 
       local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
@@ -201,9 +205,10 @@ return {
 
       vim.lsp.config(server, opts)
       vim.lsp.enable(server)
+      ::continue::
     end
     cfg = {
-      debug = false, -- set to true to enable debug logging
+      debug = true, -- set to true to enable debug logging
       --log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
       -- default is  ~/.cache/nvim/lsp_signature.log
       verbose = false, -- show debug line number
