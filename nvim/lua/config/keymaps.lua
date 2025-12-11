@@ -8,13 +8,6 @@ local keymap = vim.keymap.set
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-
-
 keymap("n", "<leader>f", "<Cmd>Telescope git_files<CR>", term_opts)
 
 keymap("n", "<C-w>f", "<Cmd>Neotree toggle position=left<CR>", opts)
