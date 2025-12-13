@@ -20,36 +20,36 @@ return {
       Text = "󰉿",
       Method = "󰆧",
       Function = "󰊕",
-      Constructor = "",
-      Field = " ",
+      Constructor = "",
+      Field = " ",
       Variable = "󰀫",
       Class = "󰠱",
-      Interface = "",
-      Module = "",
+      Interface = "",
+      Module = "",
       Property = "󰜢",
       Unit = "󰑭",
       Value = "󰎠",
-      Enum = "",
+      Enum = "",
       Keyword = "󰌋",
-      Snippet = "",
+      Snippet = "",
       Color = "󰏘",
       File = "󰈙",
-      Reference = "",
+      Reference = "",
       Folder = "󰉋",
-      EnumMember = "",
+      EnumMember = "",
       Constant = "󰏿",
-      Struct = "",
-      Event = "",
+      Struct = "",
+      Event = "",
       Operator = "󰆕",
-      TypeParameter = " ",
-      Misc = " ",
+      TypeParameter = " ",
+      Misc = " ",
     }
     -- find more here: https://www.nerdfonts.com/cheat-sheet
 
     cmp.setup {
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body) -- For `luasnip` users.
+          --          luasnip.lsp_expand(args.body) -- For `luasnip` users.
         end,
       },
       mapping = {
@@ -65,7 +65,14 @@ return {
         },
         -- Accept currently selected item. If none selected, `select` first item.
         -- Set `select` to `false` to only confirm explicitly selected items.
-        ["<CR>"] = cmp.mapping.confirm { select = true },
+        ["<CR>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.close()
+            else
+              fallback()
+            end
+          end,
+          { "i" }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
