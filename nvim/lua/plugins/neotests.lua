@@ -1,38 +1,48 @@
 return
 {
-  "Issafalcon/neotest-dotnet",
+  "nvim-neotest/neotest",
   dependencies = {
-    "nvim-neotest/neotest",
+    "nsidorenco/neotest-vstest",
   },
   config = function()
     require("neotest").setup({
       adapters = {
-        require("neotest-dotnet")({
-          dap = {
-            -- Extra arguments for nvim-dap configuration
-            -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-            args = { justMyCode = false },
-            -- Enter the name of your dap adapter, the default value is netcoredbg
-            adapter_name = "coreclr"
+        require("neotest-vstest")({
+          dap_settings = {
+            type = "coreclr",
           },
-          -- Let the test-discovery know about your custom attributes (otherwise tests will not be picked up)
-          -- Note: Only custom attributes for non-parameterized tests should be added here. See the support note about parameterized tests
-          custom_attributes = {
-            --xunit = { "MyCustomFactAttribute" },
-            --nunit = { "MyCustomTestAttribute" },
-            --mstest = { "MyCustomTestMethodAttribute" }
+          -- If multiple solutions exists the adapter will ask you to choose one.
+          -- If you have a different heuristic for choosing a solution you can provide a function here.
+          solution_selector = function(solutions)
+              print("Multiple solutions found, please select one:")
+              for i, solution in ipairs(solutions) do
+                  print(i .. ": " .. solution)
+              end
+            return nil -- return the solution you want to use or nil to let the adapter choose.
+          end,
+          -- If multiple .runsettings/testconfig.json files are present in the test project directory
+          -- you will be given the choice of file to use when setting up the adapter.
+          -- Or you can provide a function here
+          -- default nil to select from all files in project directory
+          settings_selector = function(project_dir)
+            return nil -- return the .runsettings/testconfig.json file you want to use or let the adapter choose
+          end,
+          build_opts = {
+            -- Arguments that will be added to all `dotnet build` and `dotnet msbuild` commands
+            additional_args = {}
           },
-          -- Provide any additional "dotnet test" CLI commands here. These will be applied to ALL test runs performed via neotest. These need to be a table of strings, ideally with one key-value pair per item.
-          dotnet_additional_args = {
-            "--verbosity detailed"
-          },
-          -- Tell neotest-dotnet to use either solution (requires .sln file) or project (requires .csproj or .fsproj file) as project root
-          -- Note: If neovim is opened from the solution root, using the 'project' setting may sometimes find all nested projects, however,
-          --       to locate all test projects in the solution more reliably (if a .sln file is present) then 'solution' is better.
-          discovery_root = "project" -- Default
+          -- If project contains directories which are not supposed to be searched for solution files
+          discovery_directory_filter = function(search_path)
+            -- ignore hidden directories
+            return search_path:match("/%.")
+          end,
+          -- if no obvious parent solution is found, broadly scan downward for solution files from current path. This can freeze Neovim when started from broad directories.
+          broad_recursive_discovery = true,
+          timeout_ms = 30 * 5 *
+          1000               -- number of milliseconds to wait before timeout while communicating with adapter client
+
         })
       }
     })
   end
 }
-
