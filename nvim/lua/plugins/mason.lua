@@ -129,7 +129,7 @@ return {
       "omnisharp",
       "intelephense",
       "angularls",
-      "terraformls",
+      "terraform-ls",
       "pylsp"
     }
 
@@ -211,6 +211,10 @@ return {
 
         require 'lspconfig'.omnisharp.setup(opts)
         goto continue
+      end
+
+      if server == "terraform-ls" then
+        require 'lspconfig'.terraformls.setup({})
       end
 
       if server == "jdtls" then
