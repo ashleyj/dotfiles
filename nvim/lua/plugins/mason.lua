@@ -81,9 +81,9 @@ return {
             local jdtls = require('jdtls')
 
             -- Find the root directory, preferring parent pom.xml or .git
-            local root_dir = vim.fs.root(0, {'.git', 'mvnw', 'gradlew'})
+            local root_dir = vim.fs.root(0, { '.git', 'mvnw', 'gradlew' })
             if not root_dir then
-              root_dir = vim.fs.root(0, {'pom.xml'})
+              root_dir = vim.fs.root(0, { 'pom.xml' })
             end
 
             local project_name = vim.fn.fnamemodify(root_dir or vim.fn.getcwd(), ':p:h:t')
@@ -96,7 +96,7 @@ return {
             capabilities = cmp.default_capabilities(capabilities)
 
             local config = {
-              cmd = {"/home/ash/src/jdtls/bin/jdtls", "-data", workspace_dir},
+              cmd = { "/home/ash/src/jdtls/bin/jdtls", "-data", workspace_dir },
               root_dir = root_dir,
               settings = {
                 java = {}
@@ -170,7 +170,7 @@ return {
 
     local settings = {
       ui = {
-        border = "none",
+        border = "rounded",
         icons = {
           package_installed = "◍",
           package_pending = "◍",
@@ -200,6 +200,9 @@ return {
       if server == "omnisharp" then
         opts.cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/OmniSharp" }
 
+        opts.on_init = function(client)
+          client.server_capabilities.hoverProvider = true
+        end
 
         -- Hack around omnisharp not respecting the lspconfig setup
         opts.handlers = {
@@ -207,6 +210,7 @@ return {
           ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
           ["textDocument/references"] = require('omnisharp_extended').references_handler,
           ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+          ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
         }
 
         require 'lspconfig'.omnisharp.setup(opts)

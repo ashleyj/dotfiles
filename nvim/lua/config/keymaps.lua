@@ -8,6 +8,8 @@ local keymap = vim.keymap.set
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 
+
+
 keymap("n", "<leader>f", "<Cmd>Telescope git_files<CR>", term_opts)
 
 keymap("n", "<C-w>f", "<Cmd>Neotree toggle position=left<CR>", opts)
@@ -65,9 +67,5 @@ keymap("n", "<leader>do", "<Cmd>lua require'dap'.step_out()<CR>",opts)
 -- Ranfix fixes and opinionated behaviour --
 keymap('n', '<ESC>', ':noh<CR><ESC>', no_remap)
 
+vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
 
---vim.api.nvim_create_autocmd('LspAttach', {
-  --callback = function(args)
-    --vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-  --end,
---})
