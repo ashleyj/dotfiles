@@ -130,7 +130,8 @@ return {
       "intelephense",
       "angularls",
       "terraform-ls",
-      "pylsp"
+      "pylsp",
+      "texlab",
     }
 
 
@@ -160,13 +161,9 @@ return {
     })
 
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
-    })
+    vim.lsp.handlers["textDocument/hover"] = function() vim.lsp.handlers.hover { border = "rounded", } end
 
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "rounded",
-    })
+     vim.lsp.handlers["textDocument/signatureHelp"] = function () vim.lsp.handlers.signature_help { border = "rounded", } end
 
     local settings = {
       ui = {
@@ -197,6 +194,14 @@ return {
 
       server = vim.split(server, "@")[1]
 
+      if server == "angularls" then
+        opts.on_init = function(client)
+          if client.root_dir == nil then
+            client:stop()
+          end
+        end
+      end
+
       if server == "omnisharp" then
         opts.cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/OmniSharp" }
 
@@ -204,13 +209,11 @@ return {
           client.server_capabilities.hoverProvider = true
         end
 
-        -- Hack around omnisharp not respecting the lspconfig setup
         opts.handlers = {
           ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
           ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
           ["textDocument/references"] = require('omnisharp_extended').references_handler,
           ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
-          ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
         }
 
         require 'lspconfig'.omnisharp.setup(opts)
