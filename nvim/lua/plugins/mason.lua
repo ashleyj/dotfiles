@@ -71,53 +71,11 @@ return {
     "ashleyj/lsp_signature.nvim",
     "Issafalcon/lsp-overloads.nvim",
     "Hoffs/omnisharp-extended-lsp.nvim",
-    {
-      "mfussenegger/nvim-jdtls",
-      ft = "java",
-      config = function()
-        vim.api.nvim_create_autocmd("FileType", {
-          pattern = "java",
-          callback = function()
-            local jdtls = require('jdtls')
-
-            -- Find the root directory, preferring parent pom.xml or .git
-            local root_dir = vim.fs.root(0, { '.git', 'mvnw', 'gradlew' })
-            if not root_dir then
-              root_dir = vim.fs.root(0, { 'pom.xml' })
-            end
-
-            local project_name = vim.fn.fnamemodify(root_dir or vim.fn.getcwd(), ':p:h:t')
-            local workspace_dir = vim.fn.stdpath('cache') .. '/jdtls/workspace/' .. project_name
-
-            -- Create capabilities
-            local cmp = require("cmp_nvim_lsp")
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
-            capabilities = cmp.default_capabilities(capabilities)
-
-            local config = {
-              cmd = { "/home/ash/src/jdtls/bin/jdtls", "-data", workspace_dir },
-              root_dir = root_dir,
-              settings = {
-                java = {}
-              },
-              init_options = {
-                bundles = {}
-              },
-              on_attach = on_attach,
-              capabilities = capabilities
-            }
-
-            jdtls.start_or_attach(config)
-          end
-        })
-      end
-    },
+    "vivekmalneedi/veridian",
   },
 
   config = function()
     local servers = {
-      "jdtls",
       "lua_ls",
       "cssls",
       "html",
@@ -130,7 +88,12 @@ return {
       "intelephense",
       "angularls",
       "terraform-ls",
-      "pylsp"
+      "pylsp",
+      "texlab",
+      "clangd",
+      "svlangserver",
+      "verible",
+      "veridian"
     }
 
 
@@ -217,13 +180,14 @@ return {
         goto continue
       end
 
-      if server == "terraform-ls" then
-        require 'lspconfig'.terraformls.setup({})
+      if server == "clangd" then
+        opts.cmd =  {
+          vim.fn.stdpath("data") .. "/mason/packages/clangd/clangd_22.1.6/bin/clangd", "--query-driver=/usr/bin/arm-none-eabi-*"
+        }
       end
 
-      if server == "jdtls" then
-        -- Skip jdtls in the main loop, it's handled by autocmd below
-        goto continue
+      if server == "terraform-ls" then
+        require 'lspconfig'.terraformls.setup({})
       end
 
       local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)

@@ -1,0 +1,30 @@
+return {
+  "nvim-java/nvim-java",
+  config = function()
+    require('java').setup({
+
+      lombok = {
+        enable = true,
+        version = '1.18.48',
+        path = nil,
+        auto_install = true,
+      },
+      jdtls = {
+        version = '1.54.0',
+        path = nil,
+        auto_install = true,
+      },
+
+      log = {
+        use_console = true,
+        use_file = true,
+        level = 'info',
+        log_file = vim.fn.stdpath('state') .. '/nvim-java.log',
+        max_lines = 1000,
+        show_location = false,
+      },
+    })
+  end
+
+
+}
