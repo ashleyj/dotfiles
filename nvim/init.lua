@@ -21,3 +21,10 @@ require('lazy').setup('plugins')
 require "config.options"
 require "config.keymaps"
 require "config.autocommand"
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
