@@ -1,5 +1,9 @@
 return {
   "nvim-java/nvim-java",
+  dependencies = {
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+  },
   config = function()
     require('java').setup({
 
@@ -23,6 +27,14 @@ return {
         max_lines = 1000,
         show_location = false,
       },
+    })
+
+    local capabilities = require('cmp_nvim_lsp').default_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    )
+
+    require('lspconfig').jdtls.setup({
+      capabilities = capabilities,
     })
   end
 
