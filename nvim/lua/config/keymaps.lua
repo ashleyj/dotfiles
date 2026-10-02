@@ -67,5 +67,3 @@ keymap("n", "<leader>do", "<Cmd>lua require'dap'.step_out()<CR>",opts)
 -- Ranfix fixes and opinionated behaviour --
 keymap('n', '<ESC>', ':noh<CR><ESC>', no_remap)
 
-vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
-
