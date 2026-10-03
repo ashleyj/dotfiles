@@ -15,27 +15,28 @@ return {
       },
       jdtls = {
         version = '1.54.0',
+        enable = true,
         path = nil,
         auto_install = true,
       },
-
-      log = {
-        use_console = true,
-        use_file = true,
-        level = 'info',
-        log_file = vim.fn.stdpath('state') .. '/nvim-java.log',
-        max_lines = 1000,
-        show_location = false,
+      spring_boot_tools = {
+        auto_install = true,
+        enable = true,
+        version = '1.55.1'
       },
+
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
     )
 
-    require('lspconfig').jdtls.setup({
+    -- merges over the config nvim-java already registered in setup() above
+    vim.lsp.config('jdtls', {
       capabilities = capabilities,
+      on_attach = require('user.lsp.on_attach'),
     })
+    vim.lsp.enable('jdtls')
   end
 
 

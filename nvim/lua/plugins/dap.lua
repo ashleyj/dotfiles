@@ -31,7 +31,9 @@ return {
     },
     {
       "jay-babu/mason-nvim-dap.nvim",
-      dependencies = "williamboman/mason.nvim",
+      dependencies = {
+        "williamboman/mason.nvim"
+      },
       cmd = { "DapInstall", "DapUninstall" },
       opts = {
         automatic_installation = true,
