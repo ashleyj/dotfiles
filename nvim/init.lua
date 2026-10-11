@@ -24,7 +24,10 @@ require "config.autocommand"
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
-  callback = function()
-    pcall(vim.treesitter.start)
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+    if lang and vim.treesitter.query.get(lang, "highlights") then
+      pcall(vim.treesitter.start, args.buf, lang)
+    end
   end,
 })

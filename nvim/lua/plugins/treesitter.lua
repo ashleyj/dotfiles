@@ -23,7 +23,7 @@ return {
         enable = true,
         enable_autocmd = false,
       },
-      require('nvim-treesitter').install { 'javascript', 'typescript', "lua", "markdown", "markdown_inline", "bash", "python", "c_sharp", "java", "dart" }
+      require('nvim-treesitter').install { 'javascript', 'typescript', "lua", "markdown", "markdown_inline", "bash", "python", "c_sharp", "java", "dart", "c", "cpp" }
 
     }
   end

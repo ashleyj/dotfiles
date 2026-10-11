@@ -27,6 +27,7 @@ return {
       "terraform-ls",
       "pylsp",
       "texlab",
+      "clangd"
     }
 
 
